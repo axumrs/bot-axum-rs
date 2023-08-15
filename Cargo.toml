@@ -1,0 +1,19 @@
+[package]
+name = "bot-axum-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["axum.rs <team@axum.rs>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/axumrs/bot-axum-rs"
+homepage = "https://axum.rs"
+description = "axum.rs机器人"
+
+[dependencies]
+tokio = { version = "1", features = ["full"]}
+axum = "0.6"
+serde = { version="1", features = ["derive"] }
+serde_json = "1"
+config = "0.13"
+dotenv = "0.15"
+axum_tg_bot = { git = "https://github.com/axumrs/axum-tg-bot.git"}
