@@ -25,7 +25,7 @@ pub async fn github_hook_handler(
     // TODO: 验证签名
 
     let msg_text = format!(
-        "🎉 天呀，劳模站长更新代码了！\n\n {} @ {} \n\n📝 {}\n\n{}",
+        "🎉 天呀，劳模站长又双叒叕更新代码了！\n\n👉 {} @ {} \n\n📝 {}\n\n{}",
         github.head_commit.short_id(),
         github.repository.full_name,
         github.head_commit.message,
@@ -46,7 +46,7 @@ pub async fn axum_rs_handler(
     // TODO: 验证签名
 
     let msg_text = format!(
-        "👏 哇哦，勤劳的站长又上新了！《{}》（专题：{}）\n{}",
+        "👏 哇哦，勤劳的站长又双叒叕上新了！《{}》（专题：{}）\n{}",
         data.title, data.subject_name, data.url
     );
     state
