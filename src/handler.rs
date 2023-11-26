@@ -5,15 +5,22 @@ use axum_tg_bot::{TextMessage, Update};
 
 use crate::model::{AppState, AxumrsHook, GithubHook};
 
-pub async fn bot_handler(State(state): State<Arc<AppState>>, Json(update): Json<Update>) -> String {
+pub async fn bot_handler(
+    State(_state): State<Arc<AppState>>,
+    Json(update): Json<Update>,
+) -> String {
     if let Some(msg) = update.message {
-        let msg_text = msg.text.unwrap_or_default();
-        let res = state
-            .bot
-            .send_text_msg(&TextMessage::new_text(&msg_text, state.bot.chat_id.into()))
-            .await
-            .unwrap();
-        return res;
+        if let Some(user) = msg.from {
+            return format!("【提示】已删除无聊人士（{}）调戏BOT的信息", user.id);
+        }
+        return "".to_string();
+        // let msg_text = msg.text.unwrap_or_default();
+        // let res = state
+        //     .bot
+        //     .send_text_msg(&TextMessage::new_text(&msg_text, state.bot.chat_id.into()))
+        //     .await
+        //     .unwrap();
+        // return res;
     }
     "".to_string()
 }
